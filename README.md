@@ -14,3 +14,5 @@ Am inceput proiectul prin structurarea componentelor necesare unui Loopback . As
 - baud_rate : genereaza semnalul de sincronizare pentru receptor si transmitator ( un bit este impartit in 16 tick-uri pentru a evita oversamplingul, iar atunci cand baud_tick / done este 1 transmite valoarea catre componentele de transmisiune ale uartului )
 - uart_rx : receptioneaza datele primite, octet cu octet pana la finalizarea acestora (rx_done_tick)
 - 
+
+Modulul Uart_rx este contruit ca un FSM cu 4 stari : IDLE , START, DATA si STOP. Ca registre am ales state_reg ce retine starea curenta a automatului, s_reg ce numara impulsurile generate de baud_rate, n_reg ce retine numarul de biti receptionati, iar b_reg retine caracterul.
