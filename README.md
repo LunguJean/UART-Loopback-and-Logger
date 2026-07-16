@@ -48,3 +48,6 @@ Am realizat o simulare pentru a vedea mai exact functionalitatea:
 ## Modulul uart_tx
 
 Asemeni modului uart_rx, uart_tx se ocupa de transmisia octetului/bitilor receptionati.Astfel, la activarea semnalul tx_start automatul trece din IDLE in start ,incarca octetul in registrul b_reg si incepe transmisia. Principiul este acelasi, fiecare bit fiind impartit in 16 tick-uri. Dupa finalizarea transmisiei celor 8 biti de date, tx_done_tick este activat pe un singur ciclu de ceas si se revine in IDLE.
+
+
+Observatii : asemeni modului baud_rate, am gasit o implementare mai logica si mai usoara ce urmeaza sa fie aplicata ulterior.
