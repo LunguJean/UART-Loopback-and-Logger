@@ -65,5 +65,4 @@ Observatii : asemeni modului baud_rate, am gasit o implementare mai logica si ma
 
 In top_loopback am realizat conexiunea aferenta dintre baud_rate, uart_rx si uart_tx pentru a putea simula un ciclu intreg de tip loopback. Modulul este parametrizat,folosindu-se frecventa de ceas a sistemului de 100 Mhz si un baud_rate de 9600.
 
-## Probleme aparute
--Configurarea incorecta a resetului - initial
+
