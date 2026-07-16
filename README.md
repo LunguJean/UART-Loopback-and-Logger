@@ -6,7 +6,7 @@
 din PuTTY vă vine înapoi corect pe același terminal (loopback hardware):
 PuTTY → recepție UART → (fără procesare) → transmisie UART → PuTTY
 
-
+### Saptamana 3, joi
 
 # Rezolvare 
 Am inceput proiectul prin structurarea componentelor necesare unui Loopback . Astfel am ales 4 module importante:
