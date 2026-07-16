@@ -12,9 +12,17 @@ Am inceput proiectul prin structurarea componentelor necesare unui Loopback . As
 
 - timer_input : are rolul unui contor , atunci cand valoarea maxima (FINAL_VALUE) este atinsa acesta se reseteaza si genereaza un semnal de terminare ( DONE )
 - baud_rate : genereaza semnalul de sincronizare pentru receptor si transmitator ( un bit este impartit in 16 tick-uri pentru a evita oversamplingul, iar atunci cand baud_tick / done este 1 transmite valoarea catre componentele de transmisiune ale uartului )
+  Modificare : am implementat direct timer_input in modulul baud_rate pentru simplitate.
 - uart_rx : receptioneaza datele primite, octet cu octet pana la finalizarea acestora (rx_done_tick)
+- uart_tx : 
 
-## Modulul `uart_rx`
+## Modulul baud_rate
+
+Baud_rate genereaza semnalul baud_tick pentru a stabili momentul in care fiecare bit este transmis sau citit. Astfel este calculata valoarea baud_div , factorul 16 reprezentand frecventa de oversampling.
+
+Update: dupa intalnire am realizat ca este o modalitate mult mai usoara de a implementa uart-ul fara a fi nevoie de baud_rate
+
+## Modulul uart_rx
 
 Modulul Uart_rx are rolul de a receptiona bitii transmisi paralel si de a construi octetul transmis. Totul este implementat sub forma unui FSM cu 4 stari.
 
@@ -36,3 +44,7 @@ Octetul transmis este vizibil in rx_dout.
 Am realizat o simulare pentru a vedea mai exact functionalitatea:
 
 <img width="955" height="400" alt="image" src="https://github.com/user-attachments/assets/156274ca-652a-4da7-b93a-8f3be1fbd96e" />
+
+## Modulul uart_tx
+
+Asemeni modului uart_rx, uart_tx se ocupa de transmisia octetului/bitilor receptionati.Astfel, la activarea semnalul tx_start automatul trece din IDLE in start ,incarca octetul in registrul b_reg si incepe transmisia. Principiul este acelasi, fiecare bit fiind impartit in 16 tick-uri. Dupa finalizarea transmisiei celor 8 biti de date, tx_done_tick este activat pe un singur ciclu de ceas si se revine in IDLE.
