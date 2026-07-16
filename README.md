@@ -47,7 +47,21 @@ Am realizat o simulare pentru a vedea mai exact functionalitatea:
 
 ## Modulul uart_tx
 
-Asemeni modului uart_rx, uart_tx se ocupa de transmisia octetului/bitilor receptionati.Astfel, la activarea semnalul tx_start automatul trece din IDLE in start ,incarca octetul in registrul b_reg si incepe transmisia. Principiul este acelasi, fiecare bit fiind impartit in 16 tick-uri. Dupa finalizarea transmisiei celor 8 biti de date, tx_done_tick este activat pe un singur ciclu de ceas si se revine in IDLE.
+Asemeni modului uart_rx, uart_tx se ocupa de transmisia octetului/bitilor receptionati.
+
+Pentru implementare am folosit:
+- state_reg - memoreaza starea curentaa FSM-ului
+- s_reg - counter pentru impulsurile s_tick
+- n_reg - numarul de biti receptionati
+- b_reg - memoreaza bitii transmisi
+
+Astfel, la activarea semnalul tx_start automatul trece din IDLE in start ,incarca octetul in registrul b_reg si incepe transmisia. Principiul este acelasi, fiecare bit fiind impartit in 16 tick-uri. Dupa finalizarea transmisiei celor 8 biti de date, tx_done_tick este activat pe un singur ciclu de ceas si se revine in IDLE.
 
 
 Observatii : asemeni modului baud_rate, am gasit o implementare mai logica si mai usoara ce urmeaza sa fie aplicata ulterior.
+
+## Modulul top_loopback 
+
+In top_loopback am realizat conexiunea aferenta dintre baud_rate, uart_rx si uart_tx pentru a putea simula un ciclu intreg de tip loopback. Modulul este parametrizat,folosindu-se frecventa de ceas a sistemului de 100 Mhz si un baud_rate de 9600.
+
+
