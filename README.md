@@ -34,4 +34,5 @@ Dupa parcurgerea celor 8 biti de date si terminarea bitului de stop, automatul t
 Octetul transmis este vizibil in rx_dout.
 
 Am realizat o simulare pentru a vedea mai exact functionalitatea:
-<img width="155" height="200" alt="image" src="https://github.com/user-attachments/assets/156274ca-652a-4da7-b93a-8f3be1fbd96e" />
+
+<img width="455" height="200" alt="image" src="https://github.com/user-attachments/assets/156274ca-652a-4da7-b93a-8f3be1fbd96e" />
