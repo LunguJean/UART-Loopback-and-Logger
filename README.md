@@ -12,10 +12,10 @@ PuTTY → recepție UART → (fără procesare) → transmisie UART → PuTTY
 Am inceput proiectul prin structurarea componentelor necesare unui Loopback . Astfel am ales 4 module importante:
 
 - timer_input : are rolul unui contor , atunci cand valoarea maxima (FINAL_VALUE) este atinsa acesta se reseteaza si genereaza un semnal de terminare ( DONE )
-- baud_rate : genereaza semnalul de sincronizare pentru receptor si transmitator ( un bit este impartit in 16 tick-uri pentru a evita oversamplingul, iar atunci cand baud_tick / done este 1 transmite valoarea catre componentele de transmisiune ale uartului )
+- baud_rate : genereaza semnalul de sincronizare pentru receptor si transmitator 
   Modificare : am implementat direct timer_input in modulul baud_rate pentru simplitate.
-- uart_rx : receptioneaza datele primite, octet cu octet pana la finalizarea acestora (rx_done_tick)
-- uart_tx : 
+- uart_rx : receptioneaza datele primite, bit cu bit pana la finalizarea acestora 
+- uart_tx : trans,ite mai departe datele receptionate
 
 ## Modulul baud_rate
 
