@@ -66,3 +66,21 @@ Observatii : asemeni modului baud_rate, am gasit o implementare mai logica si ma
 In top_loopback am realizat conexiunea aferenta dintre baud_rate, uart_rx si uart_tx pentru a putea simula un ciclu intreg de tip loopback. Modulul este parametrizat,folosindu-se frecventa de ceas a sistemului de 100 Mhz si un baud_rate de 9600.
 
 
+
+### <ins>Saptamana 3, sambata</ins>
+
+Am inceput realizarea noului modul uart_rx. Asadar, datorita simplitatii o sa reusesc sa scap de modulul baud_rate deoarece o sa lucrez doar cu ciclurile de ceas in care sunt receptionati bitii.
+In loc de "tick-uri" o sa am semnale ce stocheaza numarul de impulsuri de ceas ce se parcurg la citirea unui bit de informatie. Am implementat urmatoarele semnale:
+- clock_count_next -
+- clock_count_ reg -
+
+Deoarece in continuare este vorba de un modul parametrizat, am ales sa pastrez in continuare parametrii stabiliti de frecventa si baud_rate, ulterior calculand impulsurile de ceas per bit ( CLK_PER_BIT ) si un counter pentru acesta ( COUNT_BITS ).
+Modulul de receptie functioneaza dupa urmatoarea regula : 
+- in starea "idle" se asteapta receptia datelor
+- in starea "start", atunci cand numarul de impulsuri de ceas ajunge la jumatea numarului total de impulsuri pe un bit, se trece la primul bit de date si in starea "data"
+- in starea "data" , odata ce se parcurge numarul total de impulsuri de ceas calculat, incepand de la jumatatea bitului de start, se stocheaza valoarea bitului de informatie, acesta fiind cel corect
+- in starea "stop", daca se ajunge la numarul de impulsuri de ceas necesar parcurgerii unui bit, automatul revine in starea idle si atribuie un singur impuls de ceas semnalului rx_done ( receptia s-a finalizat )
+
+  
+
+
