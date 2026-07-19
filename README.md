@@ -71,8 +71,8 @@ In top_loopback am realizat conexiunea aferenta dintre baud_rate, uart_rx si uar
 
 Am inceput realizarea noului modul uart_rx. Asadar, datorita simplitatii o sa reusesc sa scap de modulul baud_rate deoarece o sa lucrez doar cu ciclurile de ceas in care sunt receptionati bitii.
 In loc de "tick-uri" o sa am semnale ce stocheaza numarul de impulsuri de ceas ce se parcurg la citirea unui bit de informatie. Am implementat urmatoarele semnale:
-- clock_count_next -
-- clock_count_ reg -
+- clock_count_ reg - valoarea contorului de ceas
+- clock_count_next - valoarea ce v-a fi incarcata in registru in urmatorul front de ceas
 
 Deoarece in continuare este vorba de un modul parametrizat, am ales sa pastrez in continuare parametrii stabiliti de frecventa si baud_rate, ulterior calculand impulsurile de ceas per bit ( CLK_PER_BIT ) si un counter pentru acesta ( COUNT_BITS ).
 Modulul de receptie functioneaza dupa urmatoarea regula : 
