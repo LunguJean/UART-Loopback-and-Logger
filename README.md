@@ -88,8 +88,21 @@ Deci se observa clar cum bit-ul de start este citit la jumatatea impulsurilor de
 <img width="1246" height="701" alt="image" src="https://github.com/user-attachments/assets/7872c864-c4f2-4d5f-b7fa-81ae681f635b" />
 
 
+### <ins>Saptamana 4, luni</ins>
+
+Modulul uart_tx este implementat dupa ceeasi logica ca uart_rx cu modificarile necesare. Astfel, modulul de transmisie functioneaza in felul urmator:
+
+-in starea idle, modulul asteapta tx_start pentru a putea incarca octetul transmis intr-un registru intern. Dupa incarcare, FSM-ul trece in satrea start.
+
+-in starea start, bitul de start este transmis pe durata unui numar de impulsuri de ceas egal cu CLK_PER_BIT, automatul trecand ulterior in starea data
+
+-in starea data, fiecare bit este transmis incepand cu LSB. Dupa parcurgerea unui numar de impulsuri de ceas egal cu CLK_PER_BIT, se pregateste urmatorul bit prin shiftarea la dreapta a registrului de date. Se repeta procesul pana la transmiterea tuturor bitilor
+
+-in starea stop, linia de transmisie este 1 pe durata unui bit de stop. Automatul revine in idle si genereaza un impuls de un singur ciclu de ceas pentru tx_done.
 
 
+Am realizat si un testbench exclusiv pentru a vizualiza transmiterea bitilor de date. Aici am intampinat probleme in vizualizarea bitilor de date transmisi 
+<img width="1464" height="743" alt="image" src="https://github.com/user-attachments/assets/b9a9fcc6-4482-498f-bd12-54038dd28af5" />
 
 
 
