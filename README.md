@@ -104,6 +104,7 @@ Modulul uart_tx este implementat dupa ceeasi logica ca uart_rx cu modificarile n
 Am realizat si un testbench exclusiv pentru a vizualiza transmiterea bitilor de date. Aici am intampinat probleme in vizualizarea bitilor de date transmisi 
 <img width="1464" height="743" alt="image" src="https://github.com/user-attachments/assets/b9a9fcc6-4482-498f-bd12-54038dd28af5" />
 
+In final, modulele uart_rx si uart_tx au fost implementate in modulul top_loopback pentru a definitiva receptia si transmisia prin intermediului FPGA-ului. In aplicatia Putty am configurat comunicatia seriala pentru COM4 ( specific unitatii pe care lucrez) cu o rata de transmisie de 9600 si un singur bit de stop. In urma testarii, caracterele transmise au fost receptionate de FPGA si retransmise catre Putty.
 
 
 
