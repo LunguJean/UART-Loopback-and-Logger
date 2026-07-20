@@ -81,6 +81,16 @@ Modulul de receptie functioneaza dupa urmatoarea regula :
 - in starea "data" , odata ce se parcurge numarul total de impulsuri de ceas calculat, incepand de la jumatatea bitului de start, se stocheaza valoarea bitului de informatie, acesta fiind cel corect
 - in starea "stop", daca se ajunge la numarul de impulsuri de ceas necesar parcurgerii unui bit, automatul revine in starea idle si atribuie un singur impuls de ceas semnalului rx_done ( receptia s-a finalizat )
 
+Am creat si un testbench pentru a putea visualiza informatia receptionata si cele 4 stari ( idle = 0. start = 1, data = 2, stop = 3):
+<img width="1574" height="803" alt="image" src="https://github.com/user-attachments/assets/2d03ad9a-ba87-44c7-8caf-59a3c63129f8" />
+
+Deci se observa clar cum bit-ul de start este citit la jumatatea impulsurilor de ceas, mai apoi deplasandu-se cu toate impulsurile pentru a putea decide valoarea fiecarui bit de date.
+<img width="1246" height="701" alt="image" src="https://github.com/user-attachments/assets/7872c864-c4f2-4d5f-b7fa-81ae681f635b" />
+
+
+
+
+
   
 
 
