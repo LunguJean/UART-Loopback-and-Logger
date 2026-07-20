@@ -91,6 +91,12 @@ Deci se observa clar cum bit-ul de start este citit la jumatatea impulsurilor de
 
 
 
+
+
+
+
+
+
   
 
 
