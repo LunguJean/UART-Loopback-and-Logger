@@ -107,6 +107,14 @@ Am realizat si un testbench exclusiv pentru a vizualiza transmiterea bitilor de 
 In final, modulele uart_rx si uart_tx au fost implementate in modulul top_loopback pentru a definitiva receptia si transmisia prin intermediului FPGA-ului. In aplicatia Putty am configurat comunicatia seriala pentru COM4 ( specific unitatii pe care lucrez) cu o rata de transmisie de 9600 si un singur bit de stop. In urma testarii, caracterele transmise au fost receptionate de FPGA si retransmise catre Putty.
 
 
+### <ins>Saptamana 4, marti</ins>
+
+Pentru etapa 2 ( "Logger interactiv cu counter binar ") am conceput o schema pentru a intelege mai usor implementarea.
+
+<img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/a7085dab-d676-403f-ad9c-0f5e92b5fa5c" />
+
+Fata de prima parte, unde am avut de implementat doar receptia si transmisia prin intermediul FPGA a unor date prin conceptul de loopback, acum trebuie sa implementez de protocolul complet de comunicatie deoarece tema implica modificarea unui counter prin intermediul mesajelor primite. Am ales sa implementez,in plus, urmatoarele module :
+- 
 
 
 
