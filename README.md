@@ -122,7 +122,7 @@ Fata de prima parte, unde am avut de implementat doar receptia si transmisia pri
 - message - construieste mesajul ce v-a fi transmis catre calculator ( operatia care a fost facuta + valoarea contorului )
 - Fifo_tx - memoreaza temporar caracterele mesajului
 
-
+Pentru a usura realizarea proiectului, am decis sa implementez partea de receptie a datelor,impreuna cu operatia prin intermediul butoanelor si sa construiesc controller-ul. Ulterior, valoarea contorului v-a fi afisata prin intermediul celor 16 led-uri si a afisajului cu 7 segmente.
 
 
 
