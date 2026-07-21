@@ -113,8 +113,17 @@ Pentru etapa 2 ( "Logger interactiv cu counter binar ") am conceput o schema pen
 
 <img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/a7085dab-d676-403f-ad9c-0f5e92b5fa5c" />
 
-Fata de prima parte, unde am avut de implementat doar receptia si transmisia prin intermediul FPGA a unor date prin conceptul de loopback, acum trebuie sa implementez de protocolul complet de comunicatie deoarece tema implica modificarea unui counter prin intermediul mesajelor primite. Am ales sa implementez,in plus, urmatoarele module :
-- 
+Fata de prima parte, unde am avut de implementat doar receptia si transmisia prin intermediul FPGA a unor date prin conceptul de loopback, acum a fost necesar sa implementez prtotocolul complet de comunicatie. Tema implica modificarea unui counter prin intermediul mesajelor primite si a butoanelor, deci sistemul trebuie sa poata interpreta comenzile transmise si sa transmita catre calculator raspunsurile corespunzatoare. Astfel, am ales sa implementez, in plus, urmatoarele module:
+
+- Fifo_rx - memoreaza temporar caracterele receptionate, oprind procesul de receptie pana la procesarea datelor
+- command - citeste caracterele din fifo_rx ,identifica tipul comenzii si transmite mai departe semnalul necesar : inc, dec si reset.
+- controller - primeste semnalele de la command, precum si cele de la butoane si stabileste daca exista conflicte. Pe baza analizei se genereaza un semnal pentru contor
+- Bin_Hex - converteste valoare binara a counter-ului de 16 b in valoare hexazecimala pentru a putea creea mesajul
+- message - construieste mesajul ce v-a fi transmis catre calculator ( operatia care a fost facuta + valoarea contorului )
+- Fifo_tx - memoreaza temporar caracterele mesajului
+
+
+
 
 
 
