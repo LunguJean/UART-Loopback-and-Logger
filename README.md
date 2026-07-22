@@ -125,6 +125,27 @@ Fata de prima parte, unde am avut de implementat doar receptia si transmisia pri
 Pentru a usura realizarea proiectului, am decis sa implementez partea de receptie a datelor,impreuna cu operatia prin intermediul butoanelor si sa construiesc controller-ul. Ulterior, valoarea contorului v-a fi afisata prin intermediul celor 16 led-uri si a afisajului cu 7 segmente.
 
 
+### <ins>Saptamana 4, marti</ins>
+
+Modulul "command" primeste caracterul transmis prin rx_fifo de la rx_uart.Acesta functioneaza ca un decodor pentru comenzile primite de la calculato de incrementare, decrementare si reset. Astfel, atunci cand controller-ul e gata sa primeasca o comanda, iar rx_fifo are incarcata o valoare primita de la calculator, FSM-ul trece in starea de citire a datelor de la calculator. Dupa "read" urmeaza tranzitia in starea de salvare a caracterelor primite, ulterior fiind decodate corespunzator dupa valorile din tabelul atasat.
+
+Modulul controller reprezinta unitatea centrala de control a intreg circuitului . Acesta primeste informatia atat de la calculator cat si de la butoanele fizice.
+Comenzile provenite de la calculator sunt reprezentate de cmd_inc, cmd_dec, cmd_res, cmd_status, cmd_help și cmd_invalid,generate de modulul "command". In paralel se primesc comenzi de la butoanele fizice (inc_valid, dec_valid, reset_valid, semnale trecute prin sincronizator, debouncer, timer, edge detector si priority). Astfel, am stabilit o lista de prioritati pentru evitarea conflictelor:
+-cmd_res sau reset_valid - comanda de reset
+-cmd_inc - incrementarea prin UART
+-cmd_dec - decrementarea prin UART 
+-inc_valid - incrementarea prin buton 
+-dec_valid - decrementarea prin buton 
+-cmd_status - afisarea starii contorului
+-cmd_help - afisarea mesajului de ajutor
+-cmd_invalid - tratarea comenzilor invalide
+
+
+Comenzile provenite de la calculator sunt reprezentate prin semnalele cmd_inc, cmd_dec, cmd_res, cmd_status, cmd_help și cmd_invalid, generate de modulul Command Parser după interpretarea caracterelor primite prin UART. În paralel, comenzile provenite de la butoanele fizice sunt reprezentate prin semnalele inc_valid, dec_valid și reset_valid, obținute după sincronizarea, eliminarea fenomenului de bouncing și detectarea frontului de apăsare.
+
+Modulul b2h(Bin_Hex) realizeaza conversia din binar in zecimal, impartind cei 16 biti ai contorului in grupe de cate 4.
+
+Modulul Message functioneaza ca un 
 
 
 
