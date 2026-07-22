@@ -158,7 +158,11 @@ Conversia se realizeaza astfel:
 Am realizat si o simulare pentru a fi sigur ca transformarea functioneaza:
 <img width="1583" height="805" alt="image" src="https://github.com/user-attachments/assets/f4d2f076-d3cd-4daf-9270-0a090227fff2" />
 
+Mai departe, pentru a incheia transmisia, mesajele construite sunt receptionate de tx_fifo, unde sunt memorate temporar, caracter cu caracter.
 
+Ulterior,tx_fifo transmite lui tx_controller,modul ce controleaza transmisia prin interfata UART. In momentul in care tx_fifo nu este gol, tx_controller activeaza semnalul de citire, preia caracterul si il memoreaza intr-un registru intern. In continuare, controller-ul trimite un semnal de un singur ciclu de ceas uart_tx_start si caracterul memorat este transmis prin bus-ul uart_tx_data catre uart_tx. Dupa terminarea transmisiei, controller-ul asteapta uart_tx_done pentru a putea trece la urmatorul caracter din tx_fifo.
+
+In final, modulul uart_tx realizeaza transmisia, datele fiind trimise prin tx_pin si receptionate de Putty in configuratie seriala.
 
 
 
