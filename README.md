@@ -125,7 +125,7 @@ Fata de prima parte, unde am avut de implementat doar receptia si transmisia pri
 Pentru a usura realizarea proiectului, am decis sa implementez partea de receptie a datelor,impreuna cu operatia prin intermediul butoanelor si sa construiesc controller-ul. Ulterior, valoarea contorului v-a fi afisata prin intermediul celor 16 led-uri si a afisajului cu 7 segmente.
 
 
-### <ins>Saptamana 4, marti</ins>
+### <ins>Saptamana 4, miercuri</ins>
 
 Modulul "command" primeste caracterul transmis prin rx_fifo de la rx_uart.Acesta functioneaza ca un decodor pentru comenzile primite de la calculato de incrementare, decrementare si reset. Astfel, atunci cand controller-ul e gata sa primeasca o comanda, iar rx_fifo are incarcata o valoare primita de la calculator, FSM-ul trece in starea de citire a datelor de la calculator. Dupa "read" urmeaza tranzitia in starea de salvare a caracterelor primite, ulterior fiind decodate corespunzator dupa valorile din tabelul atasat.
 
