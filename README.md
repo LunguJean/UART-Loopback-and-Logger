@@ -145,7 +145,21 @@ Comenzile provenite de la calculator sunt reprezentate prin semnalele cmd_inc, c
 
 Modulul b2h(Bin_Hex) realizeaza conversia din binar in zecimal, impartind cei 16 biti ai contorului in grupe de cate 4.
 
-Modulul Message functioneaza ca un 
+Modulul Message functioneaza ca un generator de mesaje. Acesta primeste de la controller tipul evenimentului ( inc, dec, reset, afisarea valorii contorului , help sau comanda invalida ), construieste mesajul text si transmite caracter cu caracter catre tx_fifo.
+
+<ins>Transformarea in ASCII</ins>
+
+Pentru a putea transmite informatia din nou catre calculator prin uart_tx, valoarea primita prin b2h catre message trebuie transformata in cod ASCII. Pentru acest lucru am deci sa b2h sa faca doar impartirea celor 16 biti si in message sa implementez transformarea.
+
+Conversia se realizeaza astfel:
+- daca cifra este intre 0-9, se adauga valoarea 0x30 deoarece '0' in ascii este 0x30. Acest lucru face ca '1' sa fie 0x31, etc.
+- daca cifra este intre 10-15 ( A si F ), se adauga 0x41 ( A )  si se scade 10. Practic, '11' este 0x42, etc.
+
+Am realizat si o simulare pentru a fi sigur ca transformarea functioneaza:
+<img width="1583" height="805" alt="image" src="https://github.com/user-attachments/assets/f4d2f076-d3cd-4daf-9270-0a090227fff2" />
+
+
+
 
 
 
